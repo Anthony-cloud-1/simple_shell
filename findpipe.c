@@ -8,7 +8,7 @@
  * @input: input str
  * @pipedCommands: piped cmds
  *
- * Return: Always 0
+ * Return: int
  */
 int findPipe(char *input, char **pipedCommands)
 {
@@ -23,8 +23,5 @@ int findPipe(char *input, char **pipedCommands)
 
 	if (pipedCommands[1] == NULL)
 		return (0);
-	else
-	{
-		return (1);
-	}
+	return (1);
 }

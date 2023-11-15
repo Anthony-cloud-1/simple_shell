@@ -8,11 +8,11 @@
 #include<sys/wait.h>
 /**
  * executeCommand - execute user cmds
- * @commandTokens: cmd tokens
+ * @cmdTokens: cmd tokens
  * @programName: to display prog name
  * Return: void
  */
-void executeCommand(char **commandTokens, char *programName)
+void executeCommand(char **cmdTokens, char *programName)
 {
 	pid_t childPid = fork();
 
@@ -28,15 +28,15 @@ void executeCommand(char **commandTokens, char *programName)
 		 */
 		dup2(STDOUT_FILENO, STDERR_FILENO);
 
-		if (commandTokens[0][0] == '"' && commandTokens[0][strlen(commandTokens[0]) - 1] == '"')
+		if (cmdTokens[0][0] == '"' && cmdTokens[0][strlen(cmdTokens[0]) - 1] == '"')
 		{
-			memmove(commandTokens[0], commandTokens[0] + 1, strlen(commandTokens[0]) - 2);
-			commandTokens[0][strlen(commandTokens[0]) - 2] = '\0';
+			memmove(cmdTokens[0], cmdTokens[0] + 1, strlen(cmdTokens[0]) - 2);
+			cmdTokens[0][strlen(cmdTokens[0]) - 2] = '\0';
 		}
 
-		if (execvp(commandTokens[0], commandTokens) < 0)
+		if (execvp(cmdTokens[0], cmdTokens) < 0)
 		{
-			fprintf(stderr, "%s: 1: %s: not found\n", programName, commandTokens[0]);
+			fprintf(stderr, "%s: 1: %s: not found\n", programName, cmdTokens[0]);
 		}
 		exit(EXIT_FAILURE);
 	}

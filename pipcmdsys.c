@@ -9,27 +9,27 @@
 
 /**
  * executePipedCommands - execute piped cmds
- * @firstCommand: 1st cmd
- * @secondCommand: 2nd cmd
+ * @firstCmd: 1st cmd
+ * @secondCmd: 2nd cmd
  *
  * Return: Always 0
  */
-void executePipedCommands(char **firstCommand, char **secondCommand);
+void executePipedCommands(char **firstCmd, char **secondCmd);
 
-void executePipedCommands(char **firstCommand, char **secondCommand)
+void executePipedCommands(char **firstCmd, char **secondCmd)
 {
 	int pipefd[2];
 	pid_t child1, child2;
 
 	if (pipe(pipefd) < 0)
 	{
-		fprintf(stderr, "%s: Pipe initialization failed\n", basename(firstCommand[0]));
+		fprintf(stderr, "%s: Pipe initialization failed\n", basename(firstCmd[0]));
 		return;
 	}
 	child1 = fork();
 	if (child1 < 0)
 	{
-		fprintf(stderr, "%s: Forking child process failed\n", basename(firstCommand[0]));
+		fprintf(stderr, "%s: Forking child process failed\n", basename(firstCmd[0]));
 		return;
 	}
 
@@ -43,9 +43,9 @@ void executePipedCommands(char **firstCommand, char **secondCommand)
 		dup2(pipefd[1], STDOUT_FILENO);
 		close(pipefd[1]);
 
-		if (execvp(firstCommand[0], firstCommand) < 0)
+		if (execvp(firstCmd[0], firstCmd) < 0)
 		{
-			fprintf(stderr, "%s: Failed to execute the first command\n", basename(firstCommand[0]));
+			fprintf(stderr, "%s: Failed to execute\n", basename(firstCmd[0]));
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -58,7 +58,7 @@ void executePipedCommands(char **firstCommand, char **secondCommand)
 
 		if (child2 < 0)
 		{
-			fprintf(stderr, "%s: Forking child process failed\n", basename(firstCommand[0]));
+			fprintf(stderr, "%s: Forking process failed\n", basename(firstCmd[0]));
 			return;
 		}
 
@@ -71,9 +71,9 @@ void executePipedCommands(char **firstCommand, char **secondCommand)
 			close(pipefd[1]);
 			dup2(pipefd[0], STDIN_FILENO);
 			close(pipefd[0]);
-			if (execvp(secondCommand[0], secondCommand) < 0)
+			if (execvp(secondCmd[0], secondCmd) < 0)
 			{
-				fprintf(stderr, "%s: Failed to execute the second command\n", basename(secondCommand[0]));
+				fprintf(stderr, "%s: Failed to execute\n", basename(secondCmd[0]));
 				exit(EXIT_FAILURE);
 			}
 		}

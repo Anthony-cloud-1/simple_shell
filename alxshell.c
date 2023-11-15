@@ -11,15 +11,15 @@
 /**
  * main - Simple shell program
  * @argc: argc
- * @argv[]: argv
+ * @argv: argv
  *
  * Return: Always 0
  */
 int main(int argc, char *argv[]);
 int main(int argc, char *argv[])
 {
-	char inputCommand[LETLMT], *parsedCommands[CMDLMT];
-	char *parsedCommandsPiped[CMDLMT];
+	char inputCommand[LETLMT], *psdCommands[CMDLMT];
+	char *psdCommandsPiped[CMDLMT];
 	int commandType = 0;
 
 	FILE *inputFile = stdin; /* Use stdin by default for interactive mode */
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 		 *  Process the input
 		 */
 
-		commandType = processInput(inputCommand, parsedCommands, parsedCommandsPiped);
+		commandType = processInput(inputCommand, psdCommands, psdCommandsPiped);
 		 /*
 		 * commandType returns zero if there is no command
 		 * or it is a built-in command,
@@ -63,10 +63,10 @@ int main(int argc, char *argv[])
 		 */
 
 		if (commandType == 1)
-			executeCommand(parsedCommands, argv[0]);
+			executeCommand(psdCommands, argv[0]);
 
 		if (commandType == 2)
-			executePipedCommands(parsedCommands, parsedCommandsPiped);
+			executePipedCommands(psdCommands, psdCommandsPiped);
 	}
 
 	if (inputFile != stdin)
