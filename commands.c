@@ -9,6 +9,7 @@
  *
  * Return: Always 0
  */
+int handleInternalCommands(char **parsedInput);
 int handleInternalCommands(char **parsedInput)
 {
 	int  i, commandMatch = 0;
@@ -32,7 +33,7 @@ int handleInternalCommands(char **parsedInput)
 		case 1:
 			/*
 			 *printf("exit\n");
-			exit(0);
+			*exit(0);
 			*/
 			if (parsedInput[1] != NULL)
 			{
@@ -45,10 +46,10 @@ int handleInternalCommands(char **parsedInput)
 					exit(EXIT_FAILURE);
 				}
 				/*
-				int exitStatus = atoi(parsedInput[1]);
+				*int exitStatus = atoi(parsedInput[1]);
 				*/
 				exit(exitStatus);
-			} 
+			}
 			else
 			{
 				exit(0);  /* Exit with a default status of 0 */

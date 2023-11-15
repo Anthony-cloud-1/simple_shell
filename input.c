@@ -17,7 +17,7 @@ int takeInput(char *userInput, FILE *inputFile)
 	char inputBuffer[MAX_INPUT_LENGTH];
 
 	/*
-	printf("$ ");
+	*printf("$ ");
 	*/
 
 	if (fgets(inputBuffer, sizeof(inputBuffer), inputFile) == NULL)
@@ -25,18 +25,18 @@ int takeInput(char *userInput, FILE *inputFile)
 		/*
 		* Handle the "end of file" condition (Ctrl+D)
 		*
-		printf("exit\n");
-		
-		exit(EXIT_SUCCESS);
+		*printf("exit\n");
+		*exit(EXIT_SUCCESS);
 		*/
 		return (1);
 	}
 
 	if (inputBuffer[0] == '#')
 	{
-	/*Skip/commented line
+	/*
+	 * Skip/commented line
 	 */
-		return(1);
+		return (1);
 	}
 
 	/*

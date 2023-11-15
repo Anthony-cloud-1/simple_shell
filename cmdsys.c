@@ -48,12 +48,5 @@ void executeCommand(char **commandTokens, char *programName)
 		wait(NULL); /*wait(&status)*/
 		return;
 
-		/*
-		 * if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
-		{
-			fprintf(stderr, "Command failed with status %d\n", WEXITSTATUS(status));
-		}
-		*/
-
 	}
 }
