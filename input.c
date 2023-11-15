@@ -24,10 +24,8 @@ int takeInput(char *userInput, FILE *inputFile)
 	{
 		/*
 		* Handle the "end of file" condition (Ctrl+D)
-		*
-		*printf("exit\n");
-		*exit(EXIT_SUCCESS);
 		*/
+		printf("\n");
 		return (1);
 	}
 
