@@ -9,8 +9,8 @@
 
 /**
  * executePipedCommands - execute piped cmds
- * @firstCmd: 1st cmd
- * @secondCmd: 2nd cmd
+ * @firstCmd:first command
+ * @secondCmd: second command
  *
  * Return: Always 0
  */
