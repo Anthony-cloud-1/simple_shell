@@ -8,7 +8,7 @@
 /**
  * splitBySpace - splits commands by space
  * @input: user input
- * @parsedTokens: parsed tokens
+ * @parsedTokens: parsed token
  *
  * Return: void
  */

@@ -8,7 +8,7 @@
 #include<sys/wait.h>
 /**
  * executeCommand - execute user cmds
- * @cmdTokens: cmd tokens
+ * @cmdTokens: cmd token
  * @programName: to display prog name
  * Return: void
  */
