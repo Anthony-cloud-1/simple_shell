@@ -26,9 +26,9 @@ int main(int argc, char *argv[])
 
 	if (argc > 1 && strcmp(argv[1], "-i") != 0)
 	{
-	/*
-	 * Non-interactive mode: open the file specified as an argument
-	 */
+		/*
+		 * Non-interactive mode: open the file specified as an argument
+		 */
 		inputFile = fopen(argv[1], "r+");
 		if (inputFile == NULL)
 		{
@@ -50,12 +50,12 @@ int main(int argc, char *argv[])
 
 		if (takeInput(inputCommand, inputFile))
 			break;
-		 /*
+		/*
 		 *  Process the input
 		 */
 
 		commandType = processInput(inputCommand, psdCommands, psdCommandsPiped);
-		 /*
+		/*
 		 * commandType returns zero if there is no command
 		 * or it is a built-in command,
 		 * 1 if it is a simple command
